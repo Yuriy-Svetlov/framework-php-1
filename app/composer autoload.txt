@@ -1,0 +1,69 @@
+﻿
+
+On basic Composer
+
+-------------------------
+1 - Step
+-------------------------
+{
+    "autoload": {
+        "psr-4": {
+            "app\\": ""
+        }
+    }	
+}
+
+or other for PRODACTION optimisation
+
+https://getcomposer.org/doc/articles/autoloader-optimization.md
+
+{
+    "autoload": {
+    	"optimize-autoloader": true,
+        "psr-4": {
+            "app\\": ""
+        }
+    },
+	"config": {
+	    "optimize-autoloader": true,
+	    "apcu-autoloader": true
+	}    	
+}
+
+for PRODACTION
+composer update --optimize-autoloader
+composer update --apcu-autoloader
+-------------------------
+
+
+-------------------------
+2 - Step
+-------------------------
+composer dump-autoload -o
+
+or
+
+for PRODACTION
+composer dump-autoload -o
+composer dump-autoload --apcu
+-------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------

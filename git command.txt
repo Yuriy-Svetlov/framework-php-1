@@ -1,0 +1,14 @@
+git clone git@github.com:semiromid/framework-php-1.git ./.
+
+
+
+        
+//--------------------------
+git add .
+
+git commit -m "0.0.1"
+
+git push origin master
+//--------------------------
+
+

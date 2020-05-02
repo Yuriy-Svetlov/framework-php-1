@@ -1,0 +1,13 @@
+{
+    "name": "framework-php-1/framework-php-1",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "app\\": "../"
+        }
+    },
+	"config": {
+	    "optimize-autoloader": true,
+	    "apcu-autoloader": true
+	}    	
+}
