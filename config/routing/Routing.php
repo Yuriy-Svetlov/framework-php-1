@@ -11,12 +11,14 @@ class Routing extends AppRouting
     public function init(){
 
     	//-----------------------------
+    	// [/upload]
+    	//-----------------------------
 		if($this->group("/upload", ["POST","PUT","GET"])){
 
-	        if($this->all("/upload", "\app\controllers\MyController", "index", ["GET"])){
+	        if($this->req("/upload", "\app\controllers\MyController", "index", ["GET"])){
 	            return;
 	        }else 
-	        if($this->all("/upload/post", "\app\controllers\MyController", "post")){
+	        if($this->req("/upload/post", "\app\controllers\MyController", "post")){
 	            return;
 	        }
 		}

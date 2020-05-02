@@ -9,7 +9,7 @@ class AppRouting
 
 
     /**
-    * For routing all requests
+    * For routing all or selectively requests
     *
     * @param string|regexp $url URL routing or regular expression which require set 'true' for $regex
     * @param classlink $controller Controller class
@@ -19,11 +19,11 @@ class AppRouting
     *
     * @return boolean false is not match URL or not match request method
     *   
-    * @example $this->all("/upload/post", \app\controllers\MyController::class, "index")
-    * @example $this->all("/upload/post", \app\controllers\MyController::class, "index", ["GET"]) 
-    * @example $this->all("/^\/upload\/post$/", \app\controllers\MyController::class, "index", ["GET"], true)       
+    * @example $this->req("/upload/post", \app\controllers\MyController::class, "index")
+    * @example $this->req("/upload/post", \app\controllers\MyController::class, "index", ["GET"]) 
+    * @example $this->req("/^\/upload\/post$/", \app\controllers\MyController::class, "index", ["GET"], true)       
     */        
-    protected function all($url, $controller, $fun, $request_method = false, $reg_exp = false){
+    protected function req($url, $controller, $fun, $request_method = false, $reg_exp = false){
 
         if($request_method !== false){
             if(!in_array(@$_SERVER['REQUEST_METHOD'], $request_method)){
