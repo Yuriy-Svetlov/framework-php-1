@@ -5,7 +5,7 @@ use app\AppControllers;
 
 use app\models\MyModel;
 
-class MyController extends \app\AppControllers
+class MyController extends AppControllers
 {
 
 

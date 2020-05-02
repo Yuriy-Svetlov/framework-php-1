@@ -10,7 +10,8 @@ return array(
     'app\\AppControllers' => $baseDir . '/AppControllers.php',
     'app\\AppModel' => $baseDir . '/AppModel.php',
     'app\\AppRouting' => $baseDir . '/AppRouting.php',
+    'app\\config\\routing\\Routing' => $baseDir . '/../config/routing/Routing.php',
     'app\\controllers\\MyController' => $baseDir . '/../controllers/MyController.php',
     'app\\models\\MyModel' => $baseDir . '/../models/MyModel.php',
-    'app\\settings\\routing\\Routing' => $baseDir . '/../settings/routing/Routing.php',
+    'approot\\debug\\AppDebug' => $baseDir . '/debug/AppDebug.php',
 );

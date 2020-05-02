@@ -9,11 +9,16 @@ class ComposerStaticInit83f3b8003c0bdf1777fbc66c722eddce
     public static $prefixLengthsPsr4 = array (
         'a' => 
         array (
+            'approot\\' => 8,
             'app\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'approot\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/',
+        ),
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/..',
@@ -25,9 +30,10 @@ class ComposerStaticInit83f3b8003c0bdf1777fbc66c722eddce
         'app\\AppControllers' => __DIR__ . '/../..' . '/AppControllers.php',
         'app\\AppModel' => __DIR__ . '/../..' . '/AppModel.php',
         'app\\AppRouting' => __DIR__ . '/../..' . '/AppRouting.php',
+        'app\\config\\routing\\Routing' => __DIR__ . '/../..' . '/../config/routing/Routing.php',
         'app\\controllers\\MyController' => __DIR__ . '/../..' . '/../controllers/MyController.php',
         'app\\models\\MyModel' => __DIR__ . '/../..' . '/../models/MyModel.php',
-        'app\\settings\\routing\\Routing' => __DIR__ . '/../..' . '/../settings/routing/Routing.php',
+        'approot\\debug\\AppDebug' => __DIR__ . '/../..' . '/debug/AppDebug.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

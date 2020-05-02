@@ -1,5 +1,5 @@
 <?php
-namespace app;
+namespace approot;
 
 use app\config\routing\Routing;
 
@@ -10,8 +10,9 @@ use app\config\routing\Routing;
 class App
 {
 
-    public function init()
+    public function init($config)
     {
+
     	defined('APP1_DEBUG') or define('APP1_DEBUG', false);
         defined('APP1_ENV') or define('APP1_ENV', 'prod'); 
 
@@ -20,8 +21,15 @@ class App
         // Log
         $this->settingLog($debug);
 
+
+        // DEBUG PANEL 
+        $this->debug_panel($debug, $config);
+        
+
         // Routing
         (new Routing())->init(); 
+        
+
     }
 
 
@@ -79,6 +87,17 @@ class App
 			ini_set("error_log", $path_log);
 		}
 		//-----------
+    }
+
+
+
+
+    private function debug_panel($debug, $config){
+    	if(!$debug){
+    		return;
+    	}
+
+    	(new \approot\debug\AppDebug())->init($config);
     }
 
 }
