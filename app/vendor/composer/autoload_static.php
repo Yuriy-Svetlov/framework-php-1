@@ -26,14 +26,15 @@ class ComposerStaticInit83f3b8003c0bdf1777fbc66c722eddce
     );
 
     public static $classMap = array (
-        'app\\App' => __DIR__ . '/../..' . '/App.php',
-        'app\\AppControllers' => __DIR__ . '/../..' . '/AppControllers.php',
-        'app\\AppModel' => __DIR__ . '/../..' . '/AppModel.php',
-        'app\\AppRouting' => __DIR__ . '/../..' . '/AppRouting.php',
         'app\\config\\routing\\Routing' => __DIR__ . '/../..' . '/../config/routing/Routing.php',
         'app\\controllers\\MyController' => __DIR__ . '/../..' . '/../controllers/MyController.php',
         'app\\models\\MyModel' => __DIR__ . '/../..' . '/../models/MyModel.php',
+        'approot\\App' => __DIR__ . '/../..' . '/App.php',
+        'approot\\AppControllers' => __DIR__ . '/../..' . '/AppControllers.php',
+        'approot\\AppModel' => __DIR__ . '/../..' . '/AppModel.php',
+        'approot\\AppRouting' => __DIR__ . '/../..' . '/AppRouting.php',
         'approot\\debug\\AppDebug' => __DIR__ . '/../..' . '/debug/AppDebug.php',
+        'approot\\debug\\controllers\\DebugController' => __DIR__ . '/../..' . '/debug/controllers/DebugController.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

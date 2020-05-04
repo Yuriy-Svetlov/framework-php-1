@@ -1,7 +1,7 @@
 <?php
 namespace app\models;
 
-use app\AppModel;
+use approot\AppModel;
 
 // [1] https://github.com/webmozart/assert
 // [2] https://github.com/Respect/Validation

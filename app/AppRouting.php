@@ -1,10 +1,16 @@
 <?php
-namespace app;
+namespace approot;
 
 
 
 class AppRouting
 {
+    private $url;
+
+   function __construct() {
+       $this->url = parse_url("http://myapp.com".$_SERVER["REQUEST_URI"], PHP_URL_PATH);
+   }
+
 
 
 
@@ -32,12 +38,12 @@ class AppRouting
         }
 
         if(!$reg_exp){
-            if($_SERVER['REQUEST_URI'] === $url){
+            if($this->url === $url){
                 (new $controller())->$fun();
                 return true;
             }
         }else{
-            if(preg_match($url, $_SERVER['REQUEST_URI'])){
+            if(preg_match($url, $this->url)){
                 (new $controller())->$fun();
                 return true;
             } 
@@ -71,11 +77,11 @@ class AppRouting
 
         if(!$reg_exp){
             if(preg_match('/^'.preg_quote($url, '/').'.*$/', 
-                $_SERVER['REQUEST_URI'])){
+                $this->url)){
                 return true;
             }
         }else{
-            if(preg_match($url, $_SERVER['REQUEST_URI'])){
+            if(preg_match($url, $this->url)){
                 return true;
             } 
         }

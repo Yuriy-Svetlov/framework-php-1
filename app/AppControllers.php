@@ -1,5 +1,5 @@
 <?php
-namespace app;
+namespace approot;
 
 
 
@@ -10,21 +10,20 @@ class AppControllers
   	function __construct(){
         $this->beforeInit();
   	    $this->init();
-  		  $this->afterInit();
+  		$this->afterInit();
     }
 
-    function __destruct(){
-        die();
-    }
 
     protected function beforeInit(){
         // clear the old headers
         header_remove();
     }
 
+
     protected function init(){
         
     }
+
 
     protected function afterInit(){
         
@@ -42,17 +41,25 @@ class AppControllers
         }
 
         echo json_encode($data);
-        //die();
+        die();
     }
 
 
+    protected function view($path_layout, $data, $resp_code = true, $header = true){
+
+        if($resp_code){
+            http_response_code(200);
+        }
+
+        if($header){
+            header('Content-type: text/html; charset=utf-8');
+        }
+
+        require $path_layout;
+        die();
+    }
 
 
-
-
-
-
-   
 }
 
 

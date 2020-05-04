@@ -27,14 +27,14 @@ class AppDebug
 
 
     private function routing($web_config){
-        if($_SERVER['REQUEST_URI'] === "/".$web_config["debug_panel"]["panel_url"]){
-            
-            var_dump("expression");
+        $url = parse_url("http://myapp.com".$_SERVER["REQUEST_URI"], PHP_URL_PATH);
+
+        // [Index]
+        if($url === "/".$web_config["debug_panel"]["panel_url"]){
+            (new \approot\debug\controllers\DebugController())->index();
             die();
         }
     }
-
-
 
 }
 

@@ -1,7 +1,7 @@
 <?php
 namespace app\controllers;
 
-use app\AppControllers;
+use approot\AppControllers;
 
 use app\models\MyModel;
 

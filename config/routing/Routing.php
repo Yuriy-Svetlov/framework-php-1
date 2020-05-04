@@ -1,7 +1,7 @@
 <?php
 namespace app\config\routing;
 
-use app\AppRouting;
+use approot\AppRouting;
 
 
 class Routing extends AppRouting
