@@ -14,7 +14,7 @@ class DebugController extends AppControllers
     {
         $view = __DIR__ . '/../views/debug/index.php'; 
 
-        $this->view($this->base_layout, ["view" => $view]);
+        $this->layout($this->base_layout, ["view" => $view]);
     }
 
 }
