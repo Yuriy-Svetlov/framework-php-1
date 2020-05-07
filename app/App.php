@@ -10,6 +10,10 @@ use app\config\routing\Routing;
 class App
 {
 
+	private static $config;
+
+
+
     public function init($config)
     {
 
@@ -17,26 +21,26 @@ class App
         defined('APP1_ENV') or define('APP1_ENV', 'prod'); 
 
         $debug = constant("APP1_DEBUG");
-
-        // Log
-        $this->settingLog($debug);
+        App::setConfig($config);
 
 
-        // DEBUG PANEL 
+        // Error log
+        $this->errorLog($debug);
+
+
+        // Debug panel 
         $this->debug_panel($debug, $config);
         
 
         // Routing
-        (new Routing())->init(); 
-        
-
+        (new Routing())->init();
     }
 
 
 
 
 
-    private function settingLog($debug)
+    private function errorLog($debug)
     {
 		//-----------
 		/*
@@ -74,16 +78,17 @@ class App
 
 		ini_set("log_errors", 1);
 
-		$path_log = __DIR__ . '/../runtime/logs/error.log';
+		$path_log = App::getConfig()["app"]["error_log"];
 
 		$file_create = true;
 		if (file_exists($path_log) !== true) {   
-			if(!fopen($path_log, "w")){
+			if(fopen($path_log, "w") === false){
 				$file_create = false;
+				trigger_error("This file 'error_log' could not be created or opened. Path: ".$path_log, E_USER_ERROR);
 			}
 		}	
 
-		if($file_create){
+		if($file_create === true){
 			ini_set("error_log", $path_log);
 		}
 		//-----------
@@ -98,6 +103,16 @@ class App
     	}
 
     	(new \approot\debug\AppDebug())->init($config);
+    }
+
+
+
+    private static function setConfig($config){
+    	App::$config = $config;
+    }
+
+    public static function getConfig(){
+    	return App::$config;
     }
 
 }

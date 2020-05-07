@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace approot\debug\controllers;
 
 use approot\AppControllers;
@@ -12,9 +14,15 @@ class DebugController extends AppControllers
 
     public function index()
     {
-        $view = __DIR__ . '/../views/debug/index.php'; 
+        
+        $model = new \approot\debug\models\DebugModel();
+        $view = __DIR__ . '/../views/debug/index.php';
 
-        $this->layout($this->base_layout, ["view" => $view]);
+        if($model->validation() !== false){
+           return $this->return_Layout($this->base_layout, ["view" => $view]);
+        }
+
+        return $this->return_Str($model->getErrorMessage());
     }
 
 }

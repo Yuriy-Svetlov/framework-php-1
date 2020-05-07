@@ -12,7 +12,7 @@ class MyModel extends AppModel
 
 
 
-    public function validation(){
+    public function rules(){
 
 
 

@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Symfony\\Polyfill\\Ctype\\Ctype' => $vendorDir . '/symfony/polyfill-ctype/Ctype.php',
+    'Webmozart\\Assert\\Assert' => $vendorDir . '/webmozart/assert/src/Assert.php',
     'app\\config\\routing\\Routing' => $baseDir . '/../config/routing/Routing.php',
     'app\\controllers\\MyController' => $baseDir . '/../controllers/MyController.php',
     'app\\models\\MyModel' => $baseDir . '/../models/MyModel.php',
@@ -15,4 +17,7 @@ return array(
     'approot\\AppRouting' => $baseDir . '/AppRouting.php',
     'approot\\debug\\AppDebug' => $baseDir . '/debug/AppDebug.php',
     'approot\\debug\\controllers\\DebugController' => $baseDir . '/debug/controllers/DebugController.php',
+    'approot\\debug\\models\\DebugModel' => $baseDir . '/debug/models/DebugModel.php',
+    'approot\\functions\\Assert' => $baseDir . '/functions/Assert.php',
+    'approot\\functions\\ResponseCode' => $baseDir . '/functions/ResponseCode.php',
 );

@@ -24,7 +24,7 @@ class Routing extends AppRouting
 		}
 		//-----------------------------
 
-        $this->error404();
+        \approot\functions\ResponseCode::code(404);
     }
 
 

@@ -6,11 +6,23 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit83f3b8003c0bdf1777fbc66c722eddce
 {
+    public static $files = array (
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'a' => 
         array (
             'approot\\' => 8,
             'app\\' => 4,
+        ),
+        'W' => 
+        array (
+            'Webmozart\\Assert\\' => 17,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
     );
 
@@ -23,9 +35,19 @@ class ComposerStaticInit83f3b8003c0bdf1777fbc66c722eddce
         array (
             0 => __DIR__ . '/../..' . '/..',
         ),
+        'Webmozart\\Assert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
     );
 
     public static $classMap = array (
+        'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
+        'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'app\\config\\routing\\Routing' => __DIR__ . '/../..' . '/../config/routing/Routing.php',
         'app\\controllers\\MyController' => __DIR__ . '/../..' . '/../controllers/MyController.php',
         'app\\models\\MyModel' => __DIR__ . '/../..' . '/../models/MyModel.php',
@@ -35,6 +57,9 @@ class ComposerStaticInit83f3b8003c0bdf1777fbc66c722eddce
         'approot\\AppRouting' => __DIR__ . '/../..' . '/AppRouting.php',
         'approot\\debug\\AppDebug' => __DIR__ . '/../..' . '/debug/AppDebug.php',
         'approot\\debug\\controllers\\DebugController' => __DIR__ . '/../..' . '/debug/controllers/DebugController.php',
+        'approot\\debug\\models\\DebugModel' => __DIR__ . '/../..' . '/debug/models/DebugModel.php',
+        'approot\\functions\\Assert' => __DIR__ . '/../..' . '/functions/Assert.php',
+        'approot\\functions\\ResponseCode' => __DIR__ . '/../..' . '/functions/ResponseCode.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -14,17 +14,17 @@ class MyController extends AppControllers
     {
         $model = new MyModel();
         if($model->validation()){
-            return $this->json_response(["status" => "1"]);
+            return $this->return_JSON(["status" => "1"]);
         }
 
-        return $this->json_response(["status" => "2"]);
+        return $this->return_JSON(["status" => "2"]);
     }
 
 
 
     public function post()
     {
-        return $this->json_response(["status" => "2"]);
+        return $this->return_JSON(["status" => "2"]);
     }
 
 }

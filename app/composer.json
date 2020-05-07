@@ -1,6 +1,8 @@
 {
     "name": "framework-php-1/framework-php-1",
-    "require": {},
+    "require": {
+        "webmozart/assert": "^1.8"
+    },
     "autoload": {
         "psr-4": {
             "app\\": "../",
