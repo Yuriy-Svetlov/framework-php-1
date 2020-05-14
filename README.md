@@ -3,35 +3,48 @@
 Very simple/slim framework for PHP
 
 ### Basic stracture
-/app/ 
-/config/ 
+
+/app/
+
+/config/
+
 /config/routing/
+
 /controllers/ 
+
 /models/
+
 /public_html/
+
 /runtime/ 
+
 /runtime/logs/
+
 /views/
+
 /views/layout/
 
+
+
 ### Routing
-/config/routing/Routing.php
+Example in
+`/config/routing/Routing.php`
 
-`$url` (string|regexp) [mandatory] - URL or regular expression. If use regular expression to need set parameter `$reg_exp` to `true`.
-
-`$controller` (string) [mandatory] - Classlink to controller
-
-`$action` (string) [mandatory] - Name of action function in controller.
-
-`$request_method` (false|array) [not mandatory, default is false] - all request methods are allowed  or array of allow request methods
-
-`$reg_exp` (boolean) [not mandatory, default is false] - if `true` will be use regular expression in `$url`
-
-`return` (boolean) - false is not match URL or not match request method
-
-```php
-req($url, $controller, $action, $request_method, $reg_exp)
 ```
+* @param `$url` (string|regexp) [mandatory] - URL or regular expression. If use regular expression to need set parameter `$reg_exp` to `true`.
+*
+* @param `$controller` (string) [mandatory] - Classlink to controller
+*
+* @param `$action` (string) [mandatory] - Name of action function in controller.
+*
+* @param `$request_method` (false|array) [not mandatory, default is false] - all request methods are allowed  or array of allow request methods
+*
+* @param `$reg_exp` (boolean) [not mandatory, default is false] - if `true` will be use regular expression in `$url`
+*
+* @return (boolean) - false is not match URL or not match request method
+```
+`req($url, $controller, $action, $request_method, $reg_exp)`
+
 
 Example 
 
@@ -47,17 +60,18 @@ Additional example located  in `/config/routing/Routing.php`
 
 ### Group routing
 
-`$url` (string|regexp) [mandatory] - URL or regular expression. If use regular expression to need set parameter `$reg_exp` to `true`.
-
-`$request_method` (false|array) [not mandatory, default is false] - all request methods are allowed  or array of allow request methods
-
-`$reg_exp` (boolean) [not mandatory, default is false] - if `true` will be use regular expression in `$url`
-
-`return` (boolean) - false is not match URL or not match request method
-
-```php
-group($url, $request_method, $reg_exp)
 ```
+* @param `$url` (string|regexp) [mandatory] - URL or regular expression. If use regular expression to need set parameter `$reg_exp` to `true`.
+*
+* @param `$request_method` (false|array) [not mandatory, default is false] - all request methods are allowed  or array of allow request methods
+*
+* @param `$reg_exp` (boolean) [not mandatory, default is false] - if `true` will be use regular expression in `$url`
+*
+* @return `return` (boolean) - false is not match URL or not match request method
+```
+`
+group($url, $request_method, $reg_exp)
+`
 
 Example 
 
@@ -234,18 +248,6 @@ Source code
         return preg_replace('/([^\\\:\w \]\[]+)/ui', "-", $msg);
     }
 ```
-
-
-=====================
-Documentation is being added...
-
-In prodaction preferably:
-Go to `/app/` and:
-composer dump-autoload -o
-composer dump-autoload --apcu
-=====================
-
-
 
 Разработка сайтов [Веб-студия Харьков](https://web-studio.kh.ua)
 

@@ -36,7 +36,7 @@ class AppRouting
     *   
     * @example $this->req("/upload/post", "\app\controllers\MyController", "index")
     * @example $this->req("/upload/post", "\app\controllers\MyController", "index", ["GET"]) 
-    * @example $this->req("/^\/upload\/post$/", "\app\controllers\MyController", "index", ["GET"], true)       
+    * @example $this->req("/^\/upload\/post.*$/", "\app\controllers\MyController", "index", ["GET"], true)       
     */        
     protected function req($url, $controller, $fun, $request_method = false, $reg_exp = false){
 
