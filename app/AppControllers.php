@@ -3,6 +3,10 @@ namespace approot;
 
 
 
+/**
+*
+*
+*/
 class AppControllers
 {
 
@@ -14,17 +18,32 @@ class AppControllers
     }
 
 
+
+    /**
+    *
+    *
+    */
     protected function beforeInit(){
-        // clear the old headers
-        header_remove();
+
     }
 
 
+
+    /**
+    *
+    *
+    */
     protected function init(){
-        
+        // clear the old headers
+        header_remove();        
     }
 
 
+
+    /**
+    *
+    *
+    */
     protected function afterInit(){
         
     }
@@ -56,6 +75,7 @@ class AppControllers
     }
 
 
+
     /**
     * HTML document output
     *
@@ -67,7 +87,7 @@ class AppControllers
     * @example $this->return_Layout($this->base_layout, ["view" => $view])
     * @example $this->return_Layout($this->base_layout, ["view" => $view], false, false)        
     */
-    protected function return_Layout($path_layout, $data, $resp_code = true, $header = true){
+    protected function return_Layout($path_layout, $data = [], $resp_code = true, $header = true){
 
         if($resp_code){
             http_response_code(200);
@@ -84,28 +104,30 @@ class AppControllers
 
 
     /**
-    * HTML document output
+    * String output
     *
-    * @param string $path_layout Path to document HTML layout
-    * @param array $data any data 
+    * @param string $str
     * @param bool $resp_code Code HTTP response, default 200. If will be 'false' HTTP code will not be setted. 
     * @param bool $header Header HTTP response, default is 'Content-type: text/html; charset=utf-8', if will set 'false' this header will not be sended. 
     *   
-    * @example $this->return_Layout($this->base_layout, ["view" => $view])
-    * @example $this->return_Layout($this->base_layout, ["view" => $view], false, false)        
+    * @example $this->return_Str("test")
+    *
+    * @example header('Content-Type: text/plain; charset=utf-8');
+    * @example $this->return_Str("test", true, false)        
     */
-    protected function return_Str(string $arg, $resp_code = true, $header = true){
+    protected function return_Str(string $str, $resp_code = true, $header = true){
         if($resp_code){
             http_response_code(200);
         }
 
         if($header){
             header('Content-type: text/html; charset=utf-8');
-        }        
+        }  
 
-        echo $arg;
+        echo $str;
         die();
     }
+
 
 
 }

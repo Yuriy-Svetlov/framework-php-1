@@ -4,23 +4,35 @@ namespace app\models;
 use approot\AppModel;
 
 // [1] https://github.com/webmozart/assert
-// [2] https://github.com/Respect/Validation
 
 class MyModel extends AppModel
 {
 
 
+	public $my_variable;
 
 
-    public function rules(){
+    function beforeValidation(): void{
+    	
+        // Sanitize variable
+        //----------------
 
-
-
-
-    	return true;
-
-        return false;
+        //----------------        
     }
+
+
+    public function rules(): array {
+
+    	return [
+
+            ["numeric", 
+                ["my_variable"]
+            ],
+
+    	];
+    }
+
+
 }
 
 

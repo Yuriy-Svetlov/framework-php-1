@@ -3,14 +3,23 @@ namespace approot;
 
 
 
+/**
+*
+*
+*/
 class AppRouting
 {
-    private $url;
 
-   function __construct() {
+
+    private $url;
+    private $app;
+
+
+
+   function __construct(App $app) {
+       $this->app = $app;
        $this->url = parse_url("http://myapp.com".$_SERVER["REQUEST_URI"], PHP_URL_PATH);
    }
-
 
 
 
@@ -25,14 +34,14 @@ class AppRouting
     *
     * @return boolean false is not match URL or not match request method
     *   
-    * @example $this->req("/upload/post", \app\controllers\MyController::class, "index")
-    * @example $this->req("/upload/post", \app\controllers\MyController::class, "index", ["GET"]) 
-    * @example $this->req("/^\/upload\/post$/", \app\controllers\MyController::class, "index", ["GET"], true)       
+    * @example $this->req("/upload/post", "\app\controllers\MyController", "index")
+    * @example $this->req("/upload/post", "\app\controllers\MyController", "index", ["GET"]) 
+    * @example $this->req("/^\/upload\/post$/", "\app\controllers\MyController", "index", ["GET"], true)       
     */        
     protected function req($url, $controller, $fun, $request_method = false, $reg_exp = false){
 
         if($request_method !== false){
-            if(!in_array(@$_SERVER['REQUEST_METHOD'], $request_method)){
+            if(in_array($this->app::$request->getMethod(), $request_method) === false){
                 return false;
             }
         }
@@ -70,7 +79,7 @@ class AppRouting
     protected function group($url, $request_method = false, $reg_exp = false){
         
         if($request_method !== false){
-            if(!in_array(@$_SERVER['REQUEST_METHOD'], $request_method)){
+            if(in_array($this->app::$request->getMethod(), $request_method) === false){
                 return false;
             }
         }
@@ -88,6 +97,8 @@ class AppRouting
  
         return false;             
     }
+
+
 
 }
 

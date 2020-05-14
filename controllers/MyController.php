@@ -2,8 +2,8 @@
 namespace app\controllers;
 
 use approot\AppControllers;
+use approot\App;
 
-use app\models\MyModel;
 
 class MyController extends AppControllers
 {
@@ -12,20 +12,58 @@ class MyController extends AppControllers
 
     public function index()
     {
-        $model = new MyModel();
-        if($model->validation()){
-            return $this->return_JSON(["status" => "1"]);
-        }
 
-        return $this->return_JSON(["status" => "2"]);
+        //------------------------
+        // GET
+        //------------------------
+        if(App::$request->isGET()){
+
+            $model = new \app\models\MyModel();
+            $model->my_variable = "u123";
+
+            if($model->validation()){
+                return $this->return_JSON(["status" => "OK"]);
+            }
+
+            return $this->return_JSON([
+                "status" => "NO", 
+                "message" => $model->getError()["message"],
+            ]);
+
+        }
+        //------------------------  
+
+        \approot\classes\ResponseCode::code(404);
     }
 
 
 
     public function post()
     {
-        return $this->return_JSON(["status" => "2"]);
+
+        //------------------------
+        // GET
+        //------------------------
+        if(App::$request->isGET()){
+
+            $model = new \app\models\MyModel();
+            $model->my_variable = 123;
+
+            if($model->validation()){
+                return $this->return_JSON(["status" => "OK"]);
+            }
+
+            return $this->return_JSON([
+                "status" => "NO", 
+                "message" => $model->getError()["message"],
+            ]);
+        }
+        //------------------------  
+
+        \approot\classes\ResponseCode::code(404);
     }
+
+
 
 }
 

@@ -8,25 +8,29 @@ class Routing extends AppRouting
 {
 
 
+
     public function init(){
 
     	//-----------------------------
-    	// [/upload]
+    	// [/index]
     	//-----------------------------
-		if($this->group("/upload", ["POST","PUT","GET"])){
+    	$this->req("/", "\app\controllers\IndexController", "index", ["GET"]);
+		//-----------------------------
 
-	        if($this->req("/upload", "\app\controllers\MyController", "index", ["GET"])){
-	            return;
-	        }else 
-	        if($this->req("/upload/post", "\app\controllers\MyController", "post")){
-	            return;
-	        }
+    	//-----------------------------
+    	// [/my]
+    	//-----------------------------
+		if($this->group("/my", ["POST","GET"])){
+
+	        $this->req("/my", "\app\controllers\MyController", "index", ["GET"]);
+
+	        $this->req("/my/post", "\app\controllers\MyController", "post");
 		}
 		//-----------------------------
 
-        \approot\functions\ResponseCode::code(404);
-    }
+        \approot\classes\ResponseCode::code(404);
 
+    }
 
 
 }
