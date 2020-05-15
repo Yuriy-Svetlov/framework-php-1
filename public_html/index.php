@@ -9,7 +9,7 @@ require __DIR__ . '/../app/vendor/autoload.php';
 
 $config = require __DIR__ . '/../config/web.php';
 
-(new approot\App())->init($config);
+(new \approot\App())->init($config);
 
 
 
