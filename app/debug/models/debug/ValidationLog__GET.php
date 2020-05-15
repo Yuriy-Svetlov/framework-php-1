@@ -25,6 +25,9 @@ class ValidationLog__GET extends AppModel
 
         $this->panel_url_debug = $config["debug_panel"]["panel_url"];
 
+         // Create log file
+        \approot\classes\Files::createFile($this->path_log_error);
+
         // Sanitize variable
         //----------------
 

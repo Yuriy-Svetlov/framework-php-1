@@ -195,7 +195,8 @@ abstract class AppModel
     {
         // Sanitize message
         //-----------------------
-        $msg["message"] = $this->sanitizeMessage($msg["message"]);
+        //$msg["message"] = $this->sanitizeMessage($msg["message"]);
+        $msg["message"] = \approot\classes\Sanitize::html_sanitize($msg["message"]);
         //-----------------------
 
         // Write to log file
@@ -208,7 +209,7 @@ abstract class AppModel
 
              // Create log file
             if(\approot\classes\Files::createFile($path_log) === true){
-                $m = "[".$msg["message"]."] in Class [".$msg["class"]."] in Property [".$msg["property"]."]";
+                $m = "[Error model validation][".$msg["message"]."] in Class [".$msg["class"]."] in Property [".$msg["property"]."]";
                 \approot\classes\Files::writeToFile($path_log, $m);
             }
         }

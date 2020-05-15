@@ -21,6 +21,8 @@ class ValidationLog__DELETE extends AppModel
         $path_log = $config["models"]["error_log"];    	
     	$this->path_log_error = $path_log;
 
+         // Create log file
+        \approot\classes\Files::createFile($this->path_log_error);
     }
 
 
