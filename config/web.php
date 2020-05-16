@@ -4,6 +4,7 @@
 return [
 
 	'app' => [
+		//'error_log' => '/var/log/php/php_errors.log'
 		'error_log' => __DIR__ . '/../runtime/logs/error.log'
 	],
 
@@ -13,6 +14,7 @@ return [
 	],
 
 	'models' => [
+		//'error_log' => '/var/log/php/errors_validation.log'
 		'error_log' => __DIR__ . '/../runtime/logs/error_validation.log'
 	],
 
