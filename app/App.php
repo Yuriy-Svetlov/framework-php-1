@@ -68,6 +68,15 @@ class App
     }
 
 
+    /**
+    *
+    *
+    */
+    final public static function getAppRoot(){
+
+        return "../";
+    }
+    
 
 }
 

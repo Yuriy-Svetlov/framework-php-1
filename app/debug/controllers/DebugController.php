@@ -25,13 +25,13 @@ class DebugController extends AppControllers
             if($model->validation() != false){
                 $data = $model->getData();
 
-                return $this->return_Layout($this->base_layout, 
+                return $this->render($this->base_layout, 
                 [
                     "data" => $data
                 ]);
             }  
 
-            return $this->return_Str($model->getError()["message"]);          
+            return $this->renderStr($model->getError()["message"]);          
         }
         //------------------------  
 
@@ -58,14 +58,14 @@ class DebugController extends AppControllers
             if($model->validation() != false){
                 $data = $model->getData();
 
-                return $this->return_Layout($this->base_layout, 
+                return $this->render($this->base_layout, 
                 [
                     "view" => $view,
                     "data" => $data
                 ]);
             }
 
-            return $this->return_Str($model->getError()["message"]);
+            return $this->renderStr($model->getError()["message"]);
         }
         //------------------------
 
@@ -78,11 +78,11 @@ class DebugController extends AppControllers
 
             if($model->validation() != false){
                 if($model->clearData() === true){
-                    $this->return_JSON(["status" => "OK"]);
+                    $this->renderJSON(["status" => "OK"]);
                 }   
             }
 
-            $this->return_JSON(["status" => "NO"]);
+            $this->renderJSON(["status" => "NO"]);
         }
         //------------------------
         
@@ -110,14 +110,14 @@ class DebugController extends AppControllers
             if($model->validation() != false){
                 $data = $model->getData();
 
-                return $this->return_Layout($this->base_layout, 
+                return $this->render($this->base_layout, 
                 [
                     "view" => $view,
                     "data" => $data
                 ]);
             }
 
-            return $this->return_Str($model->getError()["message"]);
+            return $this->renderStr($model->getError()["message"]);
         }
         //------------------------
 
@@ -130,11 +130,11 @@ class DebugController extends AppControllers
 
             if($model->validation() != false){
                 if($model->clearData() === true){
-                    $this->return_JSON(["status" => "OK"]);
+                    $this->renderJSON(["status" => "OK"]);
                 }   
             }
 
-            $this->return_JSON(["status" => "NO"]);
+            $this->renderJSON(["status" => "NO"]);
         }
         //------------------------
 

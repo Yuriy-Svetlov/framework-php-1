@@ -22,10 +22,10 @@ class MyController extends AppControllers
             $model->my_variable = "u123";
 
             if($model->validation()){
-                return $this->return_JSON(["status" => "OK"]);
+                return $this->renderJSON(["status" => "OK"]);
             }
 
-            return $this->return_JSON([
+            return $this->renderJSON([
                 "status" => "NO", 
                 "message" => $model->getError()["message"],
             ]);
@@ -50,10 +50,10 @@ class MyController extends AppControllers
             $model->my_variable = 123;
 
             if($model->validation()){
-                return $this->return_JSON(["status" => "OK"]);
+                return $this->renderJSON(["status" => "OK"]);
             }
 
-            return $this->return_JSON([
+            return $this->renderJSON([
                 "status" => "NO", 
                 "message" => $model->getError()["message"],
             ]);

@@ -104,15 +104,7 @@
     	</nav>
 
         <div style="padding-top: 50px; box-sizing: border-box;">
-	       <?php 
-               if(is_array($data) === true){
-                    if(count($data) > 0){
-                        if (array_key_exists('view', $data)) {
-                            require $data["view"]; 
-                        }
-                    }
-               }
-           ?>
+	       <?php echo $view; ?>
         </div>
 
 

@@ -13,6 +13,8 @@ class IndexController extends AppControllers
 
 
 
+
+
     public function index()
     {
 
@@ -30,7 +32,7 @@ class IndexController extends AppControllers
 
             $data["view"]["h2"] = "View";
 
-            return $this->return_Layout($this->base_layout, 
+            return $this->render($this->base_layout, 
             [
                 "view" => $view,                
                 "data" => $data

@@ -196,7 +196,7 @@ abstract class AppModel
         // Sanitize message
         //-----------------------
         //$msg["message"] = $this->sanitizeMessage($msg["message"]);
-        $msg["message"] = \approot\classes\Sanitize::html_sanitize($msg["message"]);
+        $msg["message"] = \approot\classes\Sanitize::html($msg["message"]);
         //-----------------------
 
         // Write to log file
