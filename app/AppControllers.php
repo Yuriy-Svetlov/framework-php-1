@@ -66,8 +66,8 @@ class AppControllers
     * @param bool $resp_code Code HTTP response, default 200. If will be 'false' HTTP code will not be setted. 
     * @param bool $header Header HTTP response, default is 'Content-Type: application/json', if will set 'false' this header will not be sended. 
     *   
-    * @example $this->return_JSON(["status" => "1"]) 
-    * @example $this->return_JSON(["status" => "1"], false, false)         
+    * @example $this->renderJSON(["status" => "1"]) 
+    * @example $this->renderJSON(["status" => "1"], false, false)         
     */  
     final protected function renderJSON($data, $resp_code = true, $header = true){
 
@@ -93,8 +93,8 @@ class AppControllers
     * @param bool $resp_code Code HTTP response, default 200. If will be 'false' HTTP code will not be setted. 
     * @param bool $header Header HTTP response, default is 'Content-type: text/html; charset=utf-8', if will set 'false' this header will not be sended. 
     *   
-    * @example $this->return_Layout($this->base_layout, ["view" => $view])
-    * @example $this->return_Layout($this->base_layout, ["view" => $view], false, false)        
+    * @example $this->render($this->base_layout, ["view" => $view])
+    * @example $this->render($this->base_layout, ["view" => $view], false, false)        
     */
     final protected function render(string $path_layout, array $data = [], bool $resp_code = true, bool $header = true): void{
 
@@ -128,10 +128,10 @@ class AppControllers
     * @param bool $resp_code Code HTTP response, default 200. If will be 'false' HTTP code will not be setted. 
     * @param bool $header Header HTTP response, default is 'Content-type: text/html; charset=utf-8', if will set 'false' this header will not be sended. 
     *   
-    * @example $this->return_Str("test")
+    * @example $this->renderStr("test")
     *
     * @example header('Content-Type: text/plain; charset=utf-8');
-    * @example $this->return_Str("test", true, false)        
+    * @example $this->renderStr("test", true, false)        
     */
     final protected function renderStr(string $str, $resp_code = true, $header = true){
         if($resp_code){

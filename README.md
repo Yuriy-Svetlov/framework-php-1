@@ -3,7 +3,7 @@
 Very simple/slim framework for PHP
 
 
-[Wiki] (https://github.com/semiromid/framework-php-1/wiki)
+[Wiki](https://github.com/semiromid/framework-php-1/wiki)
 
 
 
