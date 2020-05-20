@@ -74,7 +74,7 @@ class App
     */
     final public static function getAppRoot(){
 
-        return "../";
+        return __DIR__."/../";
     }
     
 
