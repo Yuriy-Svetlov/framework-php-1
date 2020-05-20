@@ -71,11 +71,11 @@ $this->addScriptBody("<script>$script</script>");
 	</a>
 	<br>
 	<a target="_blank" href="/my">
-		test - no valid request in model (/my)
+		test - is not valid data in model (/my)
 	</a>
 	<br>
 	<a target="_blank" href="/my/post">
-		test - valid request in model (/my/post)
+		test - is valid data in model (/my/post)
 	</a>
 
 	<hr>
