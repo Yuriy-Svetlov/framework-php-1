@@ -195,8 +195,8 @@ abstract class AppModel
     {
         // Sanitize message
         //-----------------------
-        //$msg["message"] = $this->sanitizeMessage($msg["message"]);
-        $msg["message"] = \approot\classes\Sanitize::html($msg["message"]);
+        //$msg["message"] = \approot\classes\Sanitize::del_all_except($msg["message"]);
+        $msg["message"] = strip_tags($msg["message"]);
         //-----------------------
 
         // Write to log file
@@ -220,14 +220,6 @@ abstract class AppModel
 
 
 
-    /**
-    *
-    *
-    */
-    protected function sanitizeMessage(string $msg): string
-    {
-        return preg_replace('/([^\\\:\w \]\[]+)/ui', "-", $msg);
-    }
 
 
 

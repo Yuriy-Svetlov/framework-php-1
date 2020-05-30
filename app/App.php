@@ -16,6 +16,7 @@ class App
 
     private static $config;
     public static $request;
+    public static $user = "\approot\classes\authentication\User";
 
 
 
@@ -44,7 +45,6 @@ class App
         (static::$request = new Request())->init();
 
 
-
         // Debug panel 
         if(constant("APP1_DEBUG") === true){
             (new \approot\debug\AppDebug())->init($this);
@@ -66,6 +66,7 @@ class App
 
     	return static::$config;
     }
+
 
 
     /**

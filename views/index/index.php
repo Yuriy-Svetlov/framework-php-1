@@ -1,7 +1,7 @@
 <?php
 use approot\classes\Sanitize;
 
-
+$h1 = Sanitize::html($data["data"]["view"]["h1"]);
 $h2 = Sanitize::html($data["data"]["view"]["h2"]);
 
 //======================================
@@ -25,7 +25,7 @@ $approot = \approot\App::getAppRoot();
 
 // [Adding <style> in layout]
 //---------------------------------
-$style = file_get_contents($approot."views_media/index/css/index.css");
+$style = file_get_contents($approot."media/views/index/index/css/index.css");
 $this->addStyle('<style type="text/css">'.$style.'</style>');
 //---------------------------------
 
@@ -53,13 +53,21 @@ $this->addScriptBody('<script src="'.$link_js.'"></script>');
 
 // [Adding <script> as code in layout]
 //---------------------------------
-$script = file_get_contents($approot."views_media/index/js/index.js");
+$script = file_get_contents($approot."media/views/index/index/js/index.js");
 $this->addScriptBody("<script>$script</script>");
 //---------------------------------
 //======================================
 
 
 ?>
+
+
+<header>
+    <h1>
+        <?php echo $h1; ?>  
+    </h1>
+</header>
+
 
 <div style="background-color: #e9ede9; padding: 50px;">
 	<h2>
@@ -107,6 +115,15 @@ $this->addScriptBody("<script>$script</script>");
 		<button id="but1" style="margin-top: 10px;" class="button__GI_m1">
 			Click me
 		</button>
+	</div>
+
+	<div style="padding-top: 10px; padding-bottom: 200px; box-sizing: border-box;">
+		<hr>
+		Test private pages
+		<br>
+	    <a style="color: #dfdfdf; color: blue;" href="/privpage">Private page</a>
+	    <br>
+	    <a style="color: #dfdfdf; color: blue;" href="/logout">Logout</a>
 	</div>
 </div>
 

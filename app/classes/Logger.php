@@ -4,7 +4,7 @@ namespace approot\classes;
 
 /**
 *
-*
+* 
 */
 class Logger
 {
@@ -64,9 +64,9 @@ class Logger
 
     /**
     *
-    *
+    * @example \approot\classes\Logger::sendToLog(string $msg);
     */
-    public static function sendToLog(string $msg): void{
+    public static function sendToLog($msg): void{
         $path_log = \approot\App::getConfig()["app"]["error_log"];
 
         $msg = "[".date("d-M-Y H:i:s")."] ".$msg.PHP_EOL;

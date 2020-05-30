@@ -12,13 +12,21 @@ class Routing extends AppRouting
     public function init(){
 
     	//-----------------------------
-    	// [/index]
+    	// [Index]
     	//-----------------------------
     	$this->req("/", "\app\controllers\IndexController", "index", ["GET"]);
+        $this->req("/login", "\app\controllers\IndexController", "login", ["GET", "POST"]);
+        $this->req("/logout", "\app\controllers\IndexController", "logout", ["GET"]);
 		//-----------------------------
 
+        //-----------------------------
+        // [Private]
+        //-----------------------------
+        $this->req("/privpage", "\app\controllers\PrivateController", "index", ["GET"]);
+        //-----------------------------
+
     	//-----------------------------
-    	// [/my]
+    	// [My]
     	//-----------------------------
 		if($this->group("/my", ["POST","GET"])){
 

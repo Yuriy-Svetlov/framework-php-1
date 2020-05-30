@@ -1,7 +1,8 @@
 <?php
 use approot\classes\Sanitize;
+use approot\App;
 
-$h1 = Sanitize::html($data["data"]["layout"]["h1"]);
+$user_identify = App::$user::getIdentify();
 
 ?>
 <!DOCTYPE html>
@@ -18,34 +19,65 @@ $h1 = Sanitize::html($data["data"]["layout"]["h1"]);
         <?php echo $this->style; ?>
 
         <style type="text/css">
+            body{
+                margin: 0px;
+                background-color: #f2f2f2;
+            }
+
+            nav{
+                padding: 12px 30px 12px 10px;
+                background-color: #706f6f;
+                text-align: right; 
+                font-size: 16px;
+            }
+
             header{
                 background-color: #dddddd;
-                padding: 10px 50px 10px 50px;
+                padding: 5px 50px 5px 50px;
             }
 
             footer{
                 background-color: #f4f8ff;
-                padding: 10px 50px 10px 50px;
+                padding: 0px 50px 0px 50px;
             }
+
+            .footer {
+              position: fixed;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              background-color: #c8c8c8;
+              color: white;
+              text-align: center;
+            }
+
+            nav > a{
+                margin-right: 20px;
+            }        
         </style>
+
     </head>
 
-
+            
     <body>
-        <header>
-            <h1>
-                <?php echo $h1; ?>  
-            </h1>
-        </header>
- 
+
+        <nav>
+            <a style="color: #dfdfdf;" href="/">Home</a>
+
+            <?php if(App::$user::isGuest() === true){ ?>
+                <a style="color: #dfdfdf;" href="/login">Login</a>
+            <?php }else{ ?>
+                <a style="color: #dfdfdf;" href="/privpage">Private page</a>
+                <a style="color: #dfdfdf;" href="/logout">Logout - (<?php echo $user_identify["username"] ?>)</a>
+            <?php } ?>
+        </nav>
+
         <div>
 	        <?php echo $view; ?>
         </div>
 
-        <footer>
-            <p>
-                Fouter
-            </p>
+        <footer class="footer">
+            <p>Footer</p>
         </footer>
 
         <?php echo $this->scripts_body; ?>

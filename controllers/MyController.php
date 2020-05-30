@@ -10,15 +10,17 @@ class MyController extends AppControllers
 
 
 
+
+
     public function index()
     {
-
+        
         //------------------------
         // GET
         //------------------------
         if(App::$request->isGET()){
 
-            $model = new \app\models\MyModel();
+            $model = new \app\models\my\MyModel();
             $model->my_variable = "u123";
 
             if($model->validation()){
@@ -46,7 +48,7 @@ class MyController extends AppControllers
         //------------------------
         if(App::$request->isGET()){
 
-            $model = new \app\models\MyModel();
+            $model = new \app\models\my\MyModel();
             $model->my_variable = 123;
 
             if($model->validation()){

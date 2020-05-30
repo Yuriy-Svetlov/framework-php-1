@@ -177,11 +177,42 @@ class Request
     */
     public static function getParamGET($v){
         
-        if(empty($_GET[$v]) !== true){
+        if(empty($_GET[$v]) !== true && is_string($_GET[$v]) === true){
             return $_GET[$v];
         }
         return NULL;
     }          
+
+
+
+    /**
+    *
+    *
+    */
+    public static function getJSON(){
+        
+        $json = file_get_contents('php://input');
+        if($json === false){
+            return NULL;
+        }
+
+        if(is_string($json) === false){
+            return NULL;
+        }
+        
+        return json_decode($json, true);
+    }  
+
+
+
+    /**
+    * 301 Moved Permanently
+    * 302 Found, 302 Moved Temporarily
+    */
+    public function redirect(string $url, int $statusCode = 302): void{
+        header('Location: '.$url, true, $statusCode);
+        exit();        
+    }
 
 
 

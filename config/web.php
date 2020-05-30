@@ -6,7 +6,15 @@ return [
 	'app' => [
 		"lang" => "en",
 		//'error_log' => '/var/log/php/php_errors.log'
-		'error_log' => __DIR__ . '/../runtime/logs/error.log'
+		'error_log' => __DIR__ . '/../runtime/logs/error.log',
+
+		"authentication" => [		
+			"cookies" => [
+				"secure" => false,
+				"httponly" => true,
+			    "samesite" => "strict",			
+			],
+		],
 	],
 
 	'debug_panel' => [
