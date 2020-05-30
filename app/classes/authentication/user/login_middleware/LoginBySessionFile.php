@@ -42,7 +42,7 @@ class LoginBySessionFile extends \approot\classes\authentication\user\LoginMiddl
                 return false;
             }
 
-            if(strlen($_COOKIE['PHPSESSID']) > 150)
+            if(static::session_valid_id($_COOKIE['PHPSESSID']) === false)
             {
                 return false;
             }
@@ -61,7 +61,7 @@ class LoginBySessionFile extends \approot\classes\authentication\user\LoginMiddl
                 return false;
             }
 
-            return LoginBySessionFile::loginByCookies();
+            return LoginBySessionFile::loginByCookies($_COOKIE['_identity']);
         }
         
         return false;   
@@ -126,9 +126,9 @@ class LoginBySessionFile extends \approot\classes\authentication\user\LoginMiddl
     *
     *
     */
-    private static function loginByCookies(){
+    private static function loginByCookies(string $data_cookie){
 
-        $user_data = \app\models\UserAuthentication::verifyByCookie($_COOKIE["_identity"]);
+        $user_data = \app\models\UserAuthentication::verifyByCookie($data_cookie);
         if($user_data === false){
             // Remove cookie
             static::setCookie("", 0);
@@ -156,13 +156,9 @@ class LoginBySessionFile extends \approot\classes\authentication\user\LoginMiddl
         }
 
         $_SESSION['id'] = $user_data["id"];
-        if(count($user_data) > 0){
-            return $user_data;
-        }else{
-            trigger_error("Array is empty Class [loginByCookies]".__CLASS__, E_USER_ERROR);
-        }
 
-        return false;
+        return $user_data;
+
     }
 
 

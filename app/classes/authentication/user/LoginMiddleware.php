@@ -34,4 +34,14 @@ class LoginMiddleware extends \approot\classes\authentication\User
     }
 
 
+
+    /**
+    *
+    *
+    */
+    protected static function session_valid_id($session_id)
+    {
+        return preg_match('/^[-,a-zA-Z0-9]{1,128}$/', $session_id) > 0;
+    }
+
 }
