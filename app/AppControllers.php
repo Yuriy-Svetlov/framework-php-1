@@ -63,7 +63,7 @@ class AppControllers
     * Response of data in JSON format
     *
     * @param array $data JSON data
-    * @param bool $resp_code Code HTTP response, default 200. If will be 'false' HTTP code will not be setted. 
+    * @param bool|int $resp_code Code HTTP response, default 200. 
     * @param bool $header Header HTTP response, default is 'Content-Type: application/json', if will set 'false' this header will not be sended. 
     *   
     * @example $this->renderJSON(["status" => "1"]) 
@@ -71,8 +71,10 @@ class AppControllers
     */  
     final protected function renderJSON($data, $resp_code = true, $header = true){
 
-        if($resp_code){
+        if($resp_code === true){
             http_response_code(200);
+        }else{
+            http_response_code($resp_code);
         }
 
         if($header){

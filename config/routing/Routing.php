@@ -28,11 +28,11 @@ class Routing extends AppRouting
     	//-----------------------------
     	// [My]
     	//-----------------------------
-		if($this->group("/my", ["POST","GET"])){
+		if($this->group("/api", ["POST","GET"])){
 
-	        $this->req("/my", "\app\controllers\MyController", "index", ["GET"]);
+	        $this->req("/api", "\app\controllers\APIController", "index", ["GET"]);
 
-	        $this->req("/my/post", "\app\controllers\MyController", "post");
+	        $this->req("/api/post", "\app\controllers\APIController", "post");
 		}
 		//-----------------------------
 

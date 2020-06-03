@@ -77,16 +77,62 @@ $this->addScriptBody("<script>$script</script>");
 	<a target="_blank" href="/AdFGFggGHhhHHyhhhbfi9878IK/debug_panhel">
 		Debug panel
 	</a>
+
+
+
+	<!-- =================== -->
+	<hr>
+	[request] GET "/api" (without authentication)
 	<br>
-	<a target="_blank" href="/my">
-		test - is not valid data in model (/my)
-	</a>
+	[response]: data <strong>must be valid</strong> in model.
 	<br>
-	<a target="_blank" href="/my/post">
-		test - is valid data in model (/my/post)
+	<a target="_blank" href="/api?userid=3535">
+		/api
 	</a>
 
+
 	<hr>
+	[request] GET "/api" (without authentication)
+	<br>
+	[response]: data <strong>must not be valid</strong> in model.
+	<br>
+	<a target="_blank" href="/api?userid=3535uuu">
+		/api
+	</a>
+	<hr>
+	<!-- =================== -->
+
+
+
+
+
+	<!-- =================== -->
+	[request] GET "/api/post" (with authentication by API_KEY)
+	<br>
+	[response]: data <strong>must be valid</strong> in model.
+	<br>
+	<button id="api_post_2__BUT__GET" style="margin-top: 10px;" class="button__GI_m1">
+		Get username
+	</button> 
+	<div id="api_post_2__result"></div>
+	<hr>
+
+
+	[request] GET "/api/post" (with authentication by API_KEY)
+	<br>
+	[response]: data <strong>must not be valid</strong> in model.
+	<br>
+	<button id="api_post_1__BUT__GET" style="margin-top: 10px;" class="button__GI_m1">
+		Get username
+	</button> 
+	<div id="api_post_1__result"></div>
+	<hr>
+	<!-- =================== -->
+
+
+
+
+
 
 	<div style="padding-top: 10px;">
 		Test adding style link to head.

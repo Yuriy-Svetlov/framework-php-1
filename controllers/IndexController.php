@@ -16,7 +16,7 @@ class IndexController extends AppControllers
 
 
     function afterInit(){
-        
+
         \approot\classes\authentication\user\login_middleware\LoginBySessionFile::init();
     }
 
@@ -24,7 +24,7 @@ class IndexController extends AppControllers
 
     public function index()
     {   
-
+        
         $view = __DIR__ . '/../views/index/index.php';
 
         //------------------------

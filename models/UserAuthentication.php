@@ -2,6 +2,9 @@
 declare(strict_types=1);
 namespace app\models;
 
+use approot\classes\authentication\user\login_middleware\LoginByAPI_KEY;
+
+
 
 
 /**
@@ -10,9 +13,6 @@ namespace app\models;
 */
 class UserAuthentication implements \approot\classes\authentication\interfaces\UserIdentity
 {
-
-
-    //const COOKIE_KEY = "dj]2@fh`H[BNЁё~JJJ/u$uy%H4^hgt!*TY-hhjNMju=u888.,JuJm";
 
 
 
@@ -84,10 +84,24 @@ class UserAuthentication implements \approot\classes\authentication\interfaces\U
 
 
 
+    /**
+    *
+    *
+    */
+    public static function verifyByAPI_KEY(string $data_header_auth): bool
+    {      
 
+        $api_key = str_replace('API_KEY ', '', $data_header_auth);
 
+        if($api_key !== "45%3rfh./,]!=-&FcvFRDVdvm,kl|z.>?"){
 
+            LoginByAPI_KEY::responseData(NULL, "Invalid API_KEY", 403);
+            return false;
+        }
 
+        return true; 
+
+    }
 
 
 }

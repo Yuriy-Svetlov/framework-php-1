@@ -44,4 +44,5 @@ class LoginMiddleware extends \approot\classes\authentication\User
         return preg_match('/^[-,a-zA-Z0-9]{1,128}$/', $session_id) > 0;
     }
 
+
 }

@@ -14,16 +14,75 @@ class LoginByAPI_KEY extends \approot\classes\authentication\user\LoginMiddlewar
 {
 
 
+    public static $response_data = [
+        "error" => "", 
+        "status" => 200,
+        "data" => NULL,
+    ];
+
+
+
     /**
     *
-    * $seconds (int) default 90 days = 7776000 sec
+    *
     */
-    final public static function login(): bool{
+    public static function init(){
 
- 
+        $verify = LoginByAPI_KEY::verifyRequestHeaders();
 
-        return false;
+        static::$isGuest = ($verify === true) ? false : true;
+
     }
+
+
+
+    /**
+    *
+    *
+    */
+    private static function verifyRequestHeaders(): bool{
+
+        $headers = getallheaders();
+        if(is_array($headers) === false){
+            \approot\classes\Logger::sendToLog("getallheaders() is not array [login] Class ".__CLASS__);
+
+            LoginByAPI_KEY::responseData(NULL, "Authentication required", 401);
+            return false;
+        }
+
+        if(array_key_exists("Authorization", $headers) === false){
+            \approot\classes\Logger::sendToLog("Key Authorization is not exists in array headers [login] Class ".__CLASS__);
+        
+            LoginByAPI_KEY::responseData(NULL, "Authentication required", 401);
+            return false;
+        }
+
+        return \app\models\UserAuthentication::verifyByAPI_KEY($headers["Authorization"]);
+    }
+
+
+
+    /**
+    *
+    *
+    */
+    public static function responseData(array $data = NULL, string $error = "", int $status = 200){
+
+        if($data != NULL){
+            LoginByAPI_KEY::$response_data["data"] = $data;
+        }  
+
+        if($error != ""){
+            LoginByAPI_KEY::$response_data["error"] = $error;
+        } 
+
+        if($status != 200){
+            LoginByAPI_KEY::$response_data["status"] = $status;
+        } 
+
+        return LoginByAPI_KEY::$response_data;
+    }
+
 
 }
 
