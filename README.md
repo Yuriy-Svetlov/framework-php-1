@@ -18,8 +18,6 @@ Very simple/slim framework for PHP
 SEMINA TAMARA
 
 
-Разработка сайтов [Веб-студия Харьков](https://web-studio.kh.ua)
-
 
 ## License
 MIT License
