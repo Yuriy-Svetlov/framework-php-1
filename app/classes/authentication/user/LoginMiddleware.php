@@ -14,6 +14,7 @@ class LoginMiddleware extends \approot\classes\authentication\User
 {
 
 
+
     /**
     *
     *
@@ -22,15 +23,39 @@ class LoginMiddleware extends \approot\classes\authentication\User
 
         $config = \approot\App::getConfig()["app"]["authentication"]["cookies"];
 
-        return setcookie( "_identity", $data, 
-        [
-            "expires" => time()+$seconds,
-            "path" => "/",
-            "domain" => "",
-            "secure" => $config["secure"],
-            "httponly" => $config["httponly"],
-            "samesite" => $config["samesite"],
-        ]);
+        if (PHP_VERSION_ID <= 70300) { 
+
+            $expires = time()+$seconds;
+            $path = "/";
+            $domain = "";
+            $secure = $config["secure"];
+            $httponly = $config["httponly"];
+            
+            return setcookie( 
+                "_identity", 
+                $data, 
+                $expires, 
+                $path, 
+                $domain, 
+                $secure, 
+                $httponly
+            );
+            
+        } else { 
+            
+            return setcookie( "_identity", $data, 
+            [
+                "expires" => time()+$seconds,
+                "path" => "/",
+                "domain" => "",
+                "secure" => $config["secure"],
+                "httponly" => $config["httponly"],
+                "samesite" => $config["samesite"],
+            ]);
+            
+        }
+
+
     }
 
 
@@ -43,6 +68,7 @@ class LoginMiddleware extends \approot\classes\authentication\User
     {
         return preg_match('/^[-,a-zA-Z0-9]{1,128}$/', $session_id) > 0;
     }
+
 
 
 }
