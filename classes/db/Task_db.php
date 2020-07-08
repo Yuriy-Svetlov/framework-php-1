@@ -23,12 +23,12 @@ class Task_db
     *
     *
     */
-    static function insert(\mysqli $db, $email){
+    static function insert(\mysqli $db, $email, $user_name, $description){
 
         $sql = "INSERT INTO " . self::TABLE_NAME . " 
-                (email) 
+                (email, user_name, description) 
                 VALUES 
-                (?)";
+                (?, ?, ?)";
 
         $stmt = $db->prepare($sql);
 
@@ -40,7 +40,7 @@ class Task_db
             return false;
         }
 
-        $bind_param = $stmt->bind_param("s", $email);
+        $bind_param = $stmt->bind_param("sss", $email, $user_name, $description);
         if (false === $bind_param) {
             $msg = "Failure bind param. ";
             $msg .= "errno: " . $stmt->errno . " ";
