@@ -1,6 +1,8 @@
 <?php
 namespace approot;
 
+use approot\AppDB;
+
 
 
 /**
@@ -81,6 +83,9 @@ class AppControllers
             header('Content-Type: application/json');
         }
 
+        // Connections db close
+        AppDB::closeConnections();
+
         echo json_encode($data);
         die();
     }
@@ -117,6 +122,9 @@ class AppControllers
             }
         }
 
+        // Connections db close
+        AppDB::closeConnections();
+
         require $path_layout;
         die();
     }
@@ -143,6 +151,9 @@ class AppControllers
         if($header){
             header('Content-type: text/html; charset=utf-8');
         }  
+
+        // Connections db close
+        AppDB::closeConnections();
 
         echo $str;
         die();

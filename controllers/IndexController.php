@@ -31,7 +31,7 @@ class IndexController extends AppControllers
         
         $view = __DIR__ . '/../views/index/index.php';
 
-        //------------------------
+
         // GET
         //------------------------
         if(App::$request->isGET()){

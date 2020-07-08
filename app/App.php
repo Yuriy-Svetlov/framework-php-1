@@ -32,7 +32,7 @@ class App
 
 
         // Web config
-        static::$config = $config;
+        self::$config = $config;
 
 
         // Logger
@@ -63,8 +63,7 @@ class App
     *
     */
     final public static function getConfig(){
-
-    	return static::$config;
+    	return self::$config;
     }
 
 
@@ -74,7 +73,6 @@ class App
     *
     */
     final public static function getAppRoot(){
-
         return __DIR__."/../";
     }
     

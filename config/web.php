@@ -4,6 +4,10 @@
 return [
 
 	'app' => [
+		"dbs" => [
+			"db_master" => "/../config/db_1.php",
+			//"db_master__example" => "/../config/db_1__example.php",
+		],
 		"lang" => "en",
 		//'error_log' => '/var/log/php/php_errors.log'
 		'error_log' => __DIR__ . '/../runtime/logs/error.log',
