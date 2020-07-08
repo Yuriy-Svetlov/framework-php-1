@@ -15,9 +15,13 @@ class IndexController extends AppControllers
 
 
 
-    function afterInit(){
+    function afterInit($data){
+        
+        $action = $data["action"];       
+        if($action === "index" || $action === "login" || $action === "logout"){
 
-        \approot\classes\authentication\user\login_middleware\LoginBySessionFile::init();
+           \approot\classes\authentication\user\login_middleware\LoginBySessionFile::init();
+        }
     }
 
 

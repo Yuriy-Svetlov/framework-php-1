@@ -46,14 +46,17 @@ class AppRouting
             }
         }
 
+        $arr = [];
+        $arr["action"] = (string) $fun;
+
         if(!$reg_exp){
             if($this->url === $url){
-                (new $controller())->$fun();
+                (new $controller($arr))->$fun();
                 return true;
             }
         }else{
-            if(preg_match($url, $this->url)){
-                (new $controller())->$fun();
+            if(preg_match($url, $this->url)){                
+                (new $controller($arr))->$fun();
                 return true;
             } 
         }

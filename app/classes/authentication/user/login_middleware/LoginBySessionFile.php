@@ -19,7 +19,7 @@ class LoginBySessionFile extends \approot\classes\authentication\user\LoginMiddl
     *
     */
     public static function init(){
-        $user_data = LoginBySessionFile::detectMethodLogin();
+        $user_data = self::detectMethodLogin();
 
         static::$isGuest = ($user_data === false) ? true : false;
 
@@ -107,7 +107,7 @@ class LoginBySessionFile extends \approot\classes\authentication\user\LoginMiddl
                     return false;
                 }
 
-                LoginBySessionFile::garbageСollector($save_path);
+                self::garbageСollector($save_path);
 
                 return $user_data;
             } else {

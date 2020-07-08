@@ -19,10 +19,10 @@ class AppControllers
 
 
 
-  	function __construct(){
-        $this->beforeInit();
-  	    $this->init();
-  		$this->afterInit();
+  	function __construct(array $data){
+        $this->beforeInit($data);
+  	    $this->init($data);
+  		$this->afterInit($data);
     }
 
 
@@ -31,7 +31,7 @@ class AppControllers
     *
     *
     */
-    protected function beforeInit(){
+    protected function beforeInit(array $data){
 
     }
 
@@ -41,7 +41,7 @@ class AppControllers
     *
     *
     */
-    private function init(){
+    private function init(array $data){
         // clear the old headers
         header_remove();   
         $this->lang = \approot\App::getConfig()["app"]["lang"];     
@@ -53,7 +53,7 @@ class AppControllers
     *
     *
     */
-    protected function afterInit(){
+    protected function afterInit(array $data){
         
     }
 

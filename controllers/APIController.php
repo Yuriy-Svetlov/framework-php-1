@@ -12,7 +12,7 @@ class APIController extends AppControllers
     private $req;
 
 
-    function afterInit(){
+    function afterInit($data){
 
         $this->req = App::$request;
         //LoginByAPI_KEY::init();

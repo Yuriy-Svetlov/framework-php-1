@@ -15,7 +15,7 @@ class PrivateController extends AppControllers
 
 
 
-    function afterInit(){
+    function afterInit($data){
         
         \approot\classes\authentication\user\login_middleware\LoginBySessionFile::init();
     }
