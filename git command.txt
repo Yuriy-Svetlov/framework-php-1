@@ -8,7 +8,7 @@ git pull origin master
 
 git add .
 
-git commit -m "0.3.5"
+git commit -m "0.3.6"
 
 git push origin master
 

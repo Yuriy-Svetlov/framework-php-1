@@ -3,7 +3,7 @@ namespace app\modules\api\v1\controllers;
 
 use approot\App;
 use approot\classes\authentication\user\login_middleware\LoginBySessionFile;
-use app\models\index\Login__POST;
+use app\modules\api\v1\models\index\Login__POST;
 
 
 class IndexController extends \approot\AppControllerAPI
@@ -27,7 +27,7 @@ class IndexController extends \approot\AppControllerAPI
         // POST
         if(App::$request->isPOST()){
             $req = App::$request;
-            $model = new \app\modules\api\v1\models\index\Login__POST();
+            $model = new Login__POST();
 
             $data = $req::getJSON();
             $model->username = $data["username"];
@@ -54,7 +54,6 @@ class IndexController extends \approot\AppControllerAPI
         \approot\classes\ResponseCode::code(404);
 
     }
-
 
 }
 
