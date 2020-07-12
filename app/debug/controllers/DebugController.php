@@ -14,10 +14,8 @@ class DebugController extends AppControllers
 
     public function index()
     {
-
         //------------------------
         // GET
-        //------------------------
         if(App::$request->isGET()){
             
             $model = new \approot\debug\models\debug\Index__GET();
@@ -50,7 +48,6 @@ class DebugController extends AppControllers
 
         //------------------------
         // GET
-        //------------------------
         if($req->isGET()){
             $model = new \approot\debug\models\debug\ErrorLog__GET();
             $model->number = $req::getParamGET("number");
@@ -69,24 +66,6 @@ class DebugController extends AppControllers
         }
         //------------------------
 
-
-        //------------------------
-        // DELETE
-        //------------------------
-        if($req->isDELETE()){
-            $model = new \approot\debug\models\debug\ErrorLog__DELETE();
-
-            if($model->validation() != false){
-                if($model->clearData() === true){
-                    $this->renderJSON(["status" => "OK"]);
-                }   
-            }
-
-            $this->renderJSON(["status" => "NO"]);
-        }
-        //------------------------
-        
-
         \approot\classes\ResponseCode::code(404);
     }
 
@@ -99,10 +78,8 @@ class DebugController extends AppControllers
         $req = App::$request;
         $view = __DIR__ . '/../views/debug/index.php';
 
-
         //------------------------
         // GET
-        //------------------------
         if($req->isGET()){
             $model = new \approot\debug\models\debug\ValidationLog__GET();
             $model->number = $req::getParamGET("number");
@@ -120,24 +97,6 @@ class DebugController extends AppControllers
             return $this->renderStr($model->getError()["message"]);
         }
         //------------------------
-
-
-        //------------------------
-        // DELETE
-        //------------------------
-        if($req->isDELETE()){
-            $model = new \approot\debug\models\debug\ValidationLog__DELETE();
-
-            if($model->validation() != false){
-                if($model->clearData() === true){
-                    $this->renderJSON(["status" => "OK"]);
-                }   
-            }
-
-            $this->renderJSON(["status" => "NO"]);
-        }
-        //------------------------
-
 
         \approot\classes\ResponseCode::code(404);
     }

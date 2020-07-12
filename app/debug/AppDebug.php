@@ -49,12 +49,25 @@ class AppDebug
             (new \approot\debug\controllers\DebugController($data))->errorLog();
             die();  
 
+        }else if($url === "/".$debug_url."/api/error_log"){
+            $this->access_ip($app->getConfig());
+            $data["action"] = "errorLog";
+            (new \approot\debug\modules\api\v1\controllers\DebugController($data))->errorLog();
+            die();  
+
         }else if($url === "/".$debug_url."/validation_log"){
             $this->access_ip($app->getConfig());
             $data["action"] = "errorValidationLog";
             (new \approot\debug\controllers\DebugController($data))->errorValidationLog();
+            die();   
+
+        }else if($url === "/".$debug_url."/api/validation_log"){
+            $this->access_ip($app->getConfig());
+            $data["action"] = "errorValidationLog";
+            (new \approot\debug\modules\api\v1\controllers\DebugController($data))->errorValidationLog();
             die();          
         }
+
     }
 
 

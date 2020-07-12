@@ -13,13 +13,11 @@ namespace approot\classes\authentication\user\login_middleware;
 class LoginByAPI_KEY extends \approot\classes\authentication\user\LoginMiddleware
 {
 
-
     public static $response_data = [
         "error" => "", 
         "status" => 200,
         "data" => NULL,
     ];
-
 
 
     /**
@@ -28,12 +26,11 @@ class LoginByAPI_KEY extends \approot\classes\authentication\user\LoginMiddlewar
     */
     public static function init(){
 
-        $verify = LoginByAPI_KEY::verifyRequestHeaders();
+        $verify = self::verifyRequestHeaders();
 
         static::$isGuest = ($verify === true) ? false : true;
 
     }
-
 
 
     /**
@@ -64,14 +61,14 @@ class LoginByAPI_KEY extends \approot\classes\authentication\user\LoginMiddlewar
         if(is_array($headers) === false){
             \approot\classes\Logger::sendToLog("getallheaders() is not array [login] Class ".__CLASS__);
 
-            LoginByAPI_KEY::responseData(NULL, "Authentication required", 401);
+            self::responseData(NULL, "Authentication required", 401);
             return false;
         }
 
         if(array_key_exists("Authorization", $headers) === false){
             \approot\classes\Logger::sendToLog("Key Authorization is not exists in array headers [login] Class ".__CLASS__);
         
-            LoginByAPI_KEY::responseData(NULL, "Authentication required", 401);
+            self::responseData(NULL, "Authentication required", 401);
             return false;
         }
 

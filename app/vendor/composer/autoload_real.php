@@ -13,6 +13,9 @@ class ComposerAutoloaderInit83f3b8003c0bdf1777fbc66c722eddce
         }
     }
 
+    /**
+     * @return \Composer\Autoload\ClassLoader
+     */
     public static function getLoader()
     {
         if (null !== self::$loader) {
@@ -45,7 +48,7 @@ class ComposerAutoloaderInit83f3b8003c0bdf1777fbc66c722eddce
             }
         }
 
-        $loader->setApcuPrefix('F/i/jMOqkAH9hpEeAzGul');
+        $loader->setApcuPrefix('RA1T3wYvUTJ7rH2o1bTS8');
         $loader->register(true);
 
         if ($useStaticLoader) {

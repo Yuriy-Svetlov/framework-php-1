@@ -31,7 +31,7 @@ $password_INPUT.addEventListener("input", function(){
 
 function send($data){
 	var http = new XMLHttpRequest();
-	var url = '//'+window.location.hostname+'/login';
+	var url = '//'+window.location.hostname+'/api/login';
 	http.open('POST', url, true);
 	http.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
 	http.timeout = 20000; // 10 seconds
@@ -48,6 +48,7 @@ function send($data){
 	    		let data;
 				try
 				{
+					console.log(http.responseText);
 				   data = JSON.parse(http.responseText);
 				}
 				catch(e)

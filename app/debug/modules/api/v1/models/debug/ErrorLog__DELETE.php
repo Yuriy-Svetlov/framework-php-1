@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace approot\debug\models\debug;
+namespace approot\debug\modules\api\v1\models\debug;
 
 use approot\AppModel;
 

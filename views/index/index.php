@@ -82,21 +82,21 @@ $this->addScriptBody("<script>$script</script>");
 
 	<!-- =================== -->
 	<hr>
-	[request] GET "/api" (without authentication)
+	[request] GET "/api/user?userid=1" (without authentication)
 	<br>
 	[response]: data <strong>must be valid</strong> in model.
 	<br>
-	<a target="_blank" href="/api?userid=3535">
+	<a target="_blank" href="/api/user?userid=1">
 		/api
 	</a>
 
 
 	<hr>
-	[request] GET "/api" (without authentication)
+	[request] GET "/api/user?userid=2" (without authentication)
 	<br>
 	[response]: data <strong>must not be valid</strong> in model.
 	<br>
-	<a target="_blank" href="/api?userid=3535uuu">
+	<a target="_blank" href="/api/user?userid=2">
 		/api
 	</a>
 	<hr>
@@ -107,7 +107,7 @@ $this->addScriptBody("<script>$script</script>");
 
 
 	<!-- =================== -->
-	[request] GET "/api/post" (with authentication by API_KEY)
+	[request] GET "/api/user/friend?userid=1" (with authentication by API_KEY)
 	<br>
 	[response]: data <strong>must be valid</strong> in model.
 	<br>
@@ -118,7 +118,7 @@ $this->addScriptBody("<script>$script</script>");
 	<hr>
 
 
-	[request] GET "/api/post" (with authentication by API_KEY)
+	[request] GET "/api/user/friend?userid=2" (with authentication by API_KEY)
 	<br>
 	[response]: data <strong>must not be valid</strong> in model.
 	<br>

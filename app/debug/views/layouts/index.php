@@ -166,8 +166,10 @@
 
 
             // Clear log
-            function clearLog(){
-                sendRequest__DELETE();
+            function clearLog(url_log_delete){
+                var $url = "//" + window.location.host + "/" + url_log_delete;
+                console.log($url);
+                sendRequest__DELETE($url);
             }
 
 
@@ -178,9 +180,8 @@
 
 
 
-            function sendRequest__DELETE(){
+            function sendRequest__DELETE(url){
                 var xhr = new XMLHttpRequest();
-                var url = window.location.href;
                 xhr.open("DELETE", url, true);
                 xhr.setRequestHeader("Content-Type", "application/json");
                 xhr.onreadystatechange = function () {

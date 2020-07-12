@@ -3,22 +3,18 @@ namespace approot;
 
 use approot\AppDB;
 
-
-
 /**
 *
 *
 */
 class AppControllers
 {
-
     protected $lang = "";
     protected $title = "";
     protected $meta_tags = "";
     protected $links_head = "";
     protected $style = "";
     protected $scripts_body = "";
-
 
 
   	function __construct(array $data){
@@ -28,7 +24,6 @@ class AppControllers
     }
 
 
-
     /**
     *
     *
@@ -36,7 +31,6 @@ class AppControllers
     protected function beforeInit(array $data){
 
     }
-
 
 
     /**
@@ -50,7 +44,6 @@ class AppControllers
     }
 
 
-
     /**
     *
     *
@@ -58,38 +51,6 @@ class AppControllers
     protected function afterInit(array $data){
         
     }
-
-
-
-    /**
-    * Response of data in JSON format
-    *
-    * @param array $data JSON data
-    * @param bool|int $resp_code Code HTTP response, default 200. 
-    * @param bool $header Header HTTP response, default is 'Content-Type: application/json', if will set 'false' this header will not be sended. 
-    *   
-    * @example $this->renderJSON(["status" => "1"]) 
-    * @example $this->renderJSON(["status" => "1"], false, false)         
-    */  
-    final protected function renderJSON($data, $resp_code = true, $header = true){
-
-        if($resp_code === true){
-            http_response_code(200);
-        }else{
-            http_response_code($resp_code);
-        }
-
-        if($header){
-            header('Content-Type: application/json');
-        }
-
-        // Connections db close
-        AppDB::closeConnections();
-
-        echo json_encode($data);
-        die();
-    }
-
 
 
     /**
@@ -130,37 +91,6 @@ class AppControllers
     }
 
 
-
-    /**
-    * String output
-    *
-    * @param string $str
-    * @param bool $resp_code Code HTTP response, default 200. If will be 'false' HTTP code will not be setted. 
-    * @param bool $header Header HTTP response, default is 'Content-type: text/html; charset=utf-8', if will set 'false' this header will not be sended. 
-    *   
-    * @example $this->renderStr("test")
-    *
-    * @example header('Content-Type: text/plain; charset=utf-8');
-    * @example $this->renderStr("test", true, false)        
-    */
-    final protected function renderStr(string $str, $resp_code = true, $header = true){
-        if($resp_code){
-            http_response_code(200);
-        }
-
-        if($header){
-            header('Content-type: text/html; charset=utf-8');
-        }  
-
-        // Connections db close
-        AppDB::closeConnections();
-
-        echo $str;
-        die();
-    }
-
-    
-
     /**
     *
     *
@@ -168,7 +98,6 @@ class AppControllers
     protected function addMetaTag(string $meta_tag): void{
         $this->meta_tags = $this->meta_tags.$meta_tag;
     }
-
 
 
     /**
@@ -180,7 +109,6 @@ class AppControllers
     }
 
 
-
     /**
     *
     *
@@ -190,7 +118,6 @@ class AppControllers
     }
 
 
-
     /**
     *
     *
@@ -198,7 +125,6 @@ class AppControllers
     protected function addScriptBody(string $scripts_body): void{
         $this->scripts_body = $this->scripts_body.$scripts_body;
     }
-
 
 }
 

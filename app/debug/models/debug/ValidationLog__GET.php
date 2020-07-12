@@ -76,6 +76,8 @@ class ValidationLog__GET extends AppModel
             "number_line" => $this->number,
             "header_html" => "Validation log",
             "page_id" => "validation_log",
+            "panel_url_debug" => $this->panel_url_debug,
+            "url_log_delete" => $this->panel_url_debug . '/api/validation_log',
         ];
     }
 

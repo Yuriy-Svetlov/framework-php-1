@@ -96,7 +96,10 @@ class ErrorLog__GET extends AppModel
             "panel_url_debug" => $this->panel_url_debug,
             "number_line" => $this->number,
             "header_html" => "Error log",
+            "detected_page" => "error_log",
             "page_id" => "error_log",
+            "panel_url_debug" => $this->panel_url_debug,
+            "url_log_delete" => $this->panel_url_debug . '/api/error_log',
         ];
     }
 

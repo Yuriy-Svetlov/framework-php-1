@@ -8,13 +8,13 @@ document.getElementById("but1").addEventListener("click", function(){
 
 document.getElementById("api_post_1__BUT__GET").addEventListener("click", function(){
 
-  send("/api/post?post_id=123G", document.getElementById("api_post_1__result"));
+  send("/api/user/friend?userid=2", document.getElementById("api_post_1__result"));
 }); 
 
 
 document.getElementById("api_post_2__BUT__GET").addEventListener("click", function(){
 
-  send("/api/post?post_id=123", document.getElementById("api_post_2__result"));
+  send("/api/user/friend?userid=1", document.getElementById("api_post_2__result"));
 }); 
 
 
@@ -34,7 +34,8 @@ function send(url, $result_el){
 	http.onreadystatechange = function() {
 	    if(http.readyState === 4) {
 	    	if(http.status === 200){
-				$result_el.textContent = http.responseText;
+	    		const r = JSON.parse(http.responseText);
+				$result_el.textContent = JSON.stringify(r);
 	    	}	
 	    }
 	}

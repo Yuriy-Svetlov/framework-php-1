@@ -34,9 +34,9 @@ class AppRouting
     *
     * @return boolean false is not match URL or not match request method
     *   
-    * @example $this->req("/upload/post", "\app\controllers\MyController", "index")
-    * @example $this->req("/upload/post", "\app\controllers\MyController", "index", ["GET"]) 
-    * @example $this->req("/^\/upload\/post.*$/", "\app\controllers\MyController", "index", ["GET"], true)       
+    * @example $this->req('/upload/post', '\app\controllers\MyController', 'index')
+    * @example $this->req('/upload/post', '\app\controllers\MyController', 'index', ['GET']) 
+    * @example $this->req("/^\/upload\/post.*$/", '\app\controllers\MyController', 'index', ['GET'], true)       
     */        
     protected function req($url, $controller, $fun, $request_method = false, $reg_exp = false){
 
@@ -47,7 +47,7 @@ class AppRouting
         }
 
         $arr = [];
-        $arr["action"] = (string) $fun;
+        $arr["action"] = $fun;
 
         if(!$reg_exp){
             if($this->url === $url){

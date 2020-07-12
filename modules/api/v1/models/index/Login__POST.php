@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
-namespace app\models\index;
+
+namespace app\modules\api\v1\models\index;
 
 use approot\AppModel;
 
