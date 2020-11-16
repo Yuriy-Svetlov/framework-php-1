@@ -1,19 +1,16 @@
 <?php
 namespace approot\classes;
 
-
 /**
-*
-* 
-*/
+ *
+ *
+ */
 class Logger
 {
 
-
-
     /**
-    *    https://www.php.net/manual/ru/errorfunc.constants.php
-    */
+     *    https://www.php.net/manual/ru/errorfunc.constants.php
+     */
     public static function init($app): void
     {
         //-----------
@@ -37,14 +34,14 @@ class Logger
         ;   Default Value: Off
         ;   Development Value: On
         ;   Production Value: On
-        */
+         */
 
-        if(constant("APP1_DEBUG") === true){
+        if (constant("APP1_DEBUG") === true) {
             // FOR DEV
             error_reporting(E_ALL);
             ini_set("display_errors", 1);
             ini_set("display_startup_errors", 1);
-        }else{
+        } else {
             // FOR PROD
             error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
             ini_set("display_errors", 0);
@@ -52,30 +49,26 @@ class Logger
 
         ini_set("log_errors", 1);
 
-
         $path_log = $app::getConfig()["app"]["error_log"];
 
-        if(\approot\classes\Files::createFile($path_log) === true){
+        if (\approot\classes\Files::createFile($path_log) === true) {
             ini_set("error_log", $path_log);
         }
     }
 
-
-
     /**
-    *
-    * @example \approot\classes\Logger::sendToLog(string $msg);
-    */
-    public static function sendToLog($msg): void{
+     *
+     * @example \approot\classes\Logger::sendToLog(string $msg);
+     */
+    public static function sendToLog($msg): void
+    {
         $path_log = \approot\App::getConfig()["app"]["error_log"];
 
-        $msg = "[".date("d-M-Y H:i:s")."] ".$msg.PHP_EOL;
+        $msg = "[" . date("d-M-Y H:i:s") . "] " . $msg . PHP_EOL;
 
-        if(error_log(addslashes($msg), 3, $path_log) !== true){
+        if (error_log(addslashes($msg), 3, $path_log) !== true) {
             trigger_error("Does not writed - error_log", E_USER_ERROR);
-        }        
+        }
     }
-
-
 
 }

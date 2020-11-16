@@ -2,19 +2,31 @@
 namespace app\modules\api\v1\controllers;
 
 use approot\App;
-use approot\classes\authentication\user\login_middleware\LoginByAPI_KEY;
+use approot\classes\Request;
 
-
-class UserController extends \approot\AppControllerAPI
+/**
+ *
+ *
+ */
+class UserController extends \approot\AppControllerAPI_REST
 {
-    private $req;
 
+    /**
+     *
+     *
+     */
+    protected function get(): void
+    {
+        $model = new \app\modules\api\v1\models\user\UserModel__GET();
+        $model->userid = Request::getParamGET('userid');
+        if($model->validation()){
+            $this->responseJSON($model->getData()); 
+        }
 
-    function afterInit($data){
-        $this->req = App::$request;
+        $this->responseJSON($model->getErrorModel());
     }
 
-
+/*
     public function user()
     {   
         $model = new \app\modules\api\v1\models\user\UserModel__GET();
@@ -57,7 +69,7 @@ class UserController extends \approot\AppControllerAPI
 
         \approot\classes\ResponseCode::code(404);
     }
-
+*/
 
 }
 

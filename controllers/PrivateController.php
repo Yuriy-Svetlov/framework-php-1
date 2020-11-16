@@ -1,43 +1,36 @@
 <?php
 namespace app\controllers;
 
-use approot\AppControllers;
 use approot\App;
-
-
+use approot\AppControllers;
 
 class PrivateController extends AppControllers
 {
-    private $base_layout = __DIR__ . '/../views/layouts/index.php';
 
+    const LAYOUT_BASE = __DIR__ . '/../views/layouts/index.php';
 
-    function afterInit($data){
+    public function afterInit($data)
+    {
         \approot\classes\authentication\user\login_middleware\LoginBySessionFile::init();
     }
 
-
-
     public function index()
-    {   
-        if(App::$user::isGuest() === true){
-            App::$request->redirect("http://".$_SERVER['SERVER_NAME']);
+    {
+        if (App::$user::isGuest() === true) {
+            App::$request->redirect("http://" . $_SERVER['SERVER_NAME']);
         }
 
         //------------------------
         // GET
-        if(App::$request->isGET()){
-            return $this->render($this->base_layout, 
-            [
-                "view" => __DIR__ . '/../views/private/index.php',
-            ]);
+        if (App::$request->isGET()) {
+            return $this->render(self::LAYOUT_BASE,
+                [
+                    "view" => __DIR__ . '/../views/private/index.php',
+                ]);
         }
-        //------------------------  
+        //------------------------
 
         \approot\classes\ResponseCode::code(404);
     }
 
-
 }
-
-
-

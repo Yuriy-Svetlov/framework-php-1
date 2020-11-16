@@ -10,20 +10,25 @@ use approot\AppDB;
  *
  *
  */
-class AppControllerAPI
+class AppControllerAPI_REST
 {
 
     /**
      *
      *
      */
-    public function __construct(array $data)
+    public function __construct()
     {
+        $requestMethod = App::$request->getMethod();
+
+        $data['method'] = $requestMethod;
+
         $this->beforeInit($data);
         $this->init($data);
         $this->afterInit($data);
+        $this->routerMethod($requestMethod);
+        $this->notFound();
     }
-
 
     /**
      *
@@ -33,7 +38,6 @@ class AppControllerAPI
     {
 
     }
-
 
     /**
      *
@@ -45,7 +49,6 @@ class AppControllerAPI
         header_remove();
     }
 
-
     /**
      *
      *
@@ -55,6 +58,86 @@ class AppControllerAPI
 
     }
 
+    /**
+     *
+     *
+     */
+    private function routerMethod(string $method): void
+    {
+        if ($method == 'GET') {
+            if (empty($_GET)) {
+                $this->getAll();
+            } else {
+                $this->get();
+            }
+        } else
+        if ($method == 'POST') {
+            $this->post();
+        } else
+        if ($method == 'PUT') {
+            $this->put();
+        } else
+        if ($method == 'PATCH') {
+            $this->patch();
+        } else
+        if ($method == 'DELETE') {
+            $this->delete();
+        }
+    }
+
+    /**
+     *
+     *
+     */
+    protected function getAll(): void
+    {
+
+    }
+
+    /**
+     *
+     *
+     */
+    protected function get(): void
+    {
+
+    }
+
+    /**
+     *
+     *
+     */
+    protected function post(): void
+    {
+
+    }
+
+    /**
+     *
+     *
+     */
+    protected function put(): void
+    {
+
+    }
+
+    /**
+     *
+     *
+     */
+    protected function patch(): void
+    {
+
+    }
+
+    /**
+     *
+     *
+     */
+    protected function delete(): void
+    {
+
+    }
 
     /**
      * Response of data in JSON format

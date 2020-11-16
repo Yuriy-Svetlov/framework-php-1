@@ -1,12 +1,12 @@
 <?php
+declare (strict_types = 1);
+
 namespace approot\classes;
 
-
-
 /**
-*
-*
-*/
+ *
+ *
+ */
 class Request
 {
 
@@ -20,26 +20,23 @@ class Request
     private $isPATCH = false;
     private $isOPTIONS = false;
 
-
-
     /**
-    *
-    *
-    */
-    public function init(){
+     *
+     *
+     */
+    public function init()
+    {
 
-        $this->requestMethod = $this->getRequestMethod();       
+        $this->requestMethod = $this->getRequestMethod();
     }
 
-
-
     /**
-    *
-    *
-    */
+     *
+     *
+     */
     private function getRequestMethod()
     {
-        if(isset($_SERVER['REQUEST_METHOD']) === false){
+        if (isset($_SERVER['REQUEST_METHOD']) === false) {
             trigger_error("REQUEST_METHOD is not valid.", E_USER_ERROR);
             \approot\classes\ResponseCode::code(503);
         }
@@ -49,171 +46,156 @@ class Request
         return $this->validateReqMethod($req);
     }
 
-
-
     /**
-    *
-    *
-    */
-    public function validateReqMethod($req){
-
-        if($req == "GET"){
+     *
+     *
+     */
+    public function validateReqMethod($req)
+    {
+        if ($req == 'GET') {
             $this->isGET = true;
 
-        }else if($req == "POST"){
+        } else if ($req == 'POST') {
             $this->isPOST = true;
 
-        }else if($req == "PUT"){
+        } else if ($req == 'PUT') {
             $this->isPUT = true;
 
-        }else if($req == "DELETE"){
+        } else if ($req == 'DELETE') {
             $this->isDELETE = true;
 
-        }else if($req == "HEAD"){
+        } else if ($req == 'HEAD') {
             $this->isHEAD = true;
 
-        }else if($req == "PATCH"){
+        } else if ($req == 'PATCH') {
             $this->isPATCH = true;
 
-        }else if($req == "OPTIONS"){
+        } else if ($req == 'OPTIONS') {
             $this->isOPTIONS = true;
 
-        }else{
-            $msg = \approot\classes\Logger::sanitize("Invalid request method - ".$req);
+        } else {
+            $msg = \approot\classes\Logger::sanitize('Invalid request method - ' . $req);
             trigger_error($msg, E_USER_ERROR);
 
             \approot\classes\ResponseCode::code(503);
-            return false;                
+            return false;
         }
 
-        return true;        
+        return $req;
     }
 
-
-
     /**
-    *
-    *
-    */
-    public function getMethod(){
+     *
+     *
+     */
+    public function getMethod()
+    {
         return $this->requestMethod;
     }
 
-
-
     /**
-    *
-    *
-    */
-    public function isGET(){
+     *
+     *
+     */
+    public function isGET()
+    {
         return $this->isGET;
     }
 
-
-
     /**
-    *
-    *
-    */
-    public function isPOST(){
+     *
+     *
+     */
+    public function isPOST()
+    {
         return $this->isPOST;
     }
 
-
-
     /**
-    *
-    *
-    */
-    public function isPUT(){
+     *
+     *
+     */
+    public function isPUT()
+    {
         return $this->isPUT;
     }
 
-
-
     /**
-    *
-    *
-    */
-    public function isHEAD(){
+     *
+     *
+     */
+    public function isHEAD()
+    {
         return $this->isHEAD;
     }
 
-
-
     /**
-    *
-    *
-    */
-    public function isDELETE(){
+     *
+     *
+     */
+    public function isDELETE()
+    {
         return $this->isDELETE;
     }
 
-
-
     /**
-    *
-    *
-    */
-    public function isPATCH(){
+     *
+     *
+     */
+    public function isPATCH()
+    {
         return $this->isPATCH;
     }
 
-
-
     /**
-    *
-    *
-    */
-    public function isOPTIONS(){
+     *
+     *
+     */
+    public function isOPTIONS()
+    {
         return $this->isOPTIONS;
     }
 
-
-
     /**
-    *
-    *
-    */
-    public static function getParamGET($v){
-        
-        if(empty($_GET[$v]) !== true && is_string($_GET[$v]) === true){
+     *
+     *
+     */
+    public static function getParamGET($v)
+    {
+
+        if (empty($_GET[$v]) !== true && is_string($_GET[$v]) === true) {
             return $_GET[$v];
         }
-        return NULL;
-    }          
-
-
-
-    /**
-    *
-    *
-    */
-    public static function getJSON(){
-        
-        $json = file_get_contents('php://input');
-        if($json === false){
-            return NULL;
-        }
-
-        if(is_string($json) === false){
-            return NULL;
-        }
-        
-        return json_decode($json, true);
-    }  
-
-
-
-    /**
-    * 301 Moved Permanently
-    * 302 Found, 302 Moved Temporarily
-    */
-    public function redirect(string $url, int $statusCode = 302): void{
-        header('Location: '.$url, true, $statusCode);
-        exit();        
+        return null;
     }
 
+    /**
+     *
+     *
+     */
+    public static function getJSON()
+    {
 
+        $json = file_get_contents('php://input');
+        if ($json === false) {
+            return null;
+        }
+
+        if (is_string($json) === false) {
+            return null;
+        }
+
+        return json_decode($json, true);
+    }
+
+    /**
+     * 301 Moved Permanently
+     * 302 Found, 302 Moved Temporarily
+     */
+    public function redirect(string $url, int $statusCode = 302): void
+    {
+        header('Location: ' . $url, true, $statusCode);
+        exit();
+    }
 
 }

@@ -1,4 +1,6 @@
 <?php
+declare (strict_types = 1);
+
 namespace approot\debug\modules\api\v1\controllers;
 
 use approot\App;
@@ -12,7 +14,7 @@ class DebugController extends \approot\AppControllerAPI
 	private $req;
 
 
-    function afterInit($data){
+    function afterInit(array $data): void{
         $this->req = App::$request;
     }
 
@@ -53,7 +55,6 @@ class DebugController extends \approot\AppControllerAPI
 
         \approot\classes\ResponseCode::code(404);
     }
-
 
 }
 
